@@ -1,0 +1,14 @@
+{
+  "name": "lieefu.com",
+  "version": "1.0.0",
+  "description": "Lieefu's web.",
+  "main": "index.js",
+  "scripts": {
+    "start":"cd server && npm start",
+    "preinstall":"node install_subfolders.js",
+    "build":"cd client && ng build --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lieefu Way",
+  "license": "LGPL-3.0"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "lieefu.com_server",
+  "version": "1.0.0",
+  "description": "lieefu.com server",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lieefu Way",
+  "license": "LGPL-3.0",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2"
+  }
+}
