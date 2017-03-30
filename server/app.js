@@ -1,43 +1,38 @@
 //https://scotch.io/tutorials/mean-app-with-angular-2-and-the-angular-cli#conclusion
 
+// Set default node environment to development
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 // Get dependencies
 const express = require('express');
-const path = require('path');
-const http = require('http');
-const bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var config = require('./config/environment');
+
+// Connect to database
+mongoose.connect(config.mongo.uri, config.mongo.options);
+
+// Populate DB with sample data
+if(config.seedDB) { require('./config/seed'); }
 
 // Get our API routes
-const apiroutes = require('./api.routes');
+const routes = require('./routes');
 
 const app = express();
-
-// Parsers for POST data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// Point static path to dist
-app.use(express.static(path.join(__dirname, '../client/dist')));
+var server = require('http').createServer(app);
+require('./config/express')(app);
 
 // Set our api routes
-app.use('/api', apiroutes);
+app.use('/',routes);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
-/**
- * Get port from environment and store in Express.
- */
-const port = process.env.PORT || '3000';
-app.set('port', port);
+/// Start server
+server.listen(config.port, config.ip, function () {
+  console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
+});
 
-/**
- * Create HTTP server.
- */
-const server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-server.listen(port, () => console.log(`API running on localhost:${port}`));
+// Expose app
+exports = module.exports = app;
