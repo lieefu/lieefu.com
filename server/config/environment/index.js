@@ -16,9 +16,9 @@ var all = {
   env: process.env.NODE_ENV,
 
   // Root path of server
-  root: path.normalize(__dirname + '../client'),
+  root: path.normalize(__dirname + '/../../../client'),
 
-  uploadpath: path.normalize(__dirname + '../client')+"/upload",
+  uploadpath: path.normalize(__dirname + '/../../../client')+"/upload",
 
   // Server port
   port: process.env.PORT || 3000,

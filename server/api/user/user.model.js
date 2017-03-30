@@ -92,21 +92,21 @@ UserSchema
   }, 'Password cannot be blank');
 
   // Validate email is not taken
-  UserSchema
-    .path('email')
-    .validate(function(value, respond) {
-      var self = this;
-      this.constructor.findOne({
-        email: value
-      }, function(err, user) {
-        if (err) throw err;
-        if (user) {
-          if (self.id === user.id) return respond(true);
-          return respond(false);
-        }
-        respond(true);
-      });
-    }, 'The specified email address is already in use.');
+  // UserSchema
+  //   .path('email')
+  //   .validate(function(value, respond) {
+  //     var self = this;
+  //     this.constructor.findOne({
+  //       email: value
+  //     }, function(err, user) {
+  //       if (err) throw err;
+  //       if (user) {
+  //         if (self.id === user.id) return respond(true);
+  //         return respond(false);
+  //       }
+  //       respond(true);
+  //     });
+  //   }, 'The specified email address is already in use.');
 //两个参数的校验器得到如下提示信息
 // (node:30616) DeprecationWarning: Implicit async custom validators (custom validators that take 2 arguments) are deprecated in mongoose >= 4.9.0.
 // See http://mongoosejs.com/docs/validation.html#async-custom-validators for more info.

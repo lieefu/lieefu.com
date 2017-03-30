@@ -4,6 +4,7 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Get dependencies
+var path = require('path');
 const express = require('express');
 var mongoose = require('mongoose');
 var config = require('./config/environment');
