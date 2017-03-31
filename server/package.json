@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "lieefu.com server",
   "scripts": {
-    "start": "NODE_ENV=development node app.js",
+    "start": "NODE_ENV=development nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lieefu Way",

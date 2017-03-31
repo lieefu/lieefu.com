@@ -49,7 +49,7 @@ module.exports = function(app) {
   }
 
   if ('development' === env || 'test' === env) {
-    //app.use(require('connect-livereload')());
+    app.use(require('connect-livereload')());
     console.log(config.root,path.join(config.root, 'dist'));
     app.use(express.static(path.join(config.root, 'dist')));
     app.use(express.static(config.uploadpath));
