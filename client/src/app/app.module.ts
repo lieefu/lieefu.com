@@ -6,10 +6,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {appRoutes} from './app.routes';
+import { DownloadComponent } from './download/download.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DownloadComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
