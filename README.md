@@ -6,3 +6,10 @@ $ npm run build
 
 ## Start server
 $ npm start
+
+#Deploy
+前台build，在client目录下，执行 ng build --prod --aot
+创建一个start.sh脚本，使用这个脚本启动后台api服务
+#!/bin/sh
+rm .forever/*.log
+NODE_ENV=production forever start -l forever_lieefu.log -e err_lieefu.log  ./lieefu.com/server/app.js
