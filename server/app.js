@@ -5,7 +5,9 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Get dependencies
 var path = require('path');
-const express = require('express');
+const app = require('express')();
+var server = require('http').Server(app);
+var socketio = require('socket.io')(server);
 var mongoose = require('mongoose');
 var config = require('./config/environment');
 
@@ -13,26 +15,27 @@ var config = require('./config/environment');
 mongoose.connect(config.mongo.uri, config.mongo.options);
 
 // Populate DB with sample data
-if(config.seedDB) { require('./config/seed'); }
+if (config.seedDB) {
+    require('./config/seed');
+}
 
 // Get our API routes
 const routes = require('./routes');
 
-const app = express();
-var server = require('http').createServer(app);
 require('./config/express')(app);
-
+//Soket Io chat
+require('./chat')(socketio);
 // Set our api routes
-app.use('/',routes);
+app.use('/', routes);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 /// Start server
-server.listen(config.port, config.ip, function () {
-  console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
+server.listen(config.port, config.ip, function() {
+    console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
 });
 
 // Expose app

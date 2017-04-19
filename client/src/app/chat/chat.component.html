@@ -1,0 +1,16 @@
+<div #scrollChat style="height:690px;overflow:auto;overflow-x:hidden;">
+    <div class="card" *ngFor="let message of messages">
+        <div class="card-block">
+            <h5 class="card-title">{{message.data.name}}</h5>
+            <p class="card-text">{{message.data.msg}}</p>
+            <div class="card-subtitle mb-2 text-muted" style="text-align:right">{{message.type}}_ {{message.data.datetime}}</div>
+        </div>
+    </div>
+</div>
+<div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Your name</span>
+    <input type="text" [(ngModel)]="username" />
+    <span class="input-group-addon" id="basic-addon1">Say</span>
+    <input type="text" class="form-control" [(ngModel)]="message" #input_msg (keyup.enter)="onEnter()" />
+    <button type="button" class="btn btn-outline-primary" (click)="sendMessage(input_msg)">Send</button>
+</div>
