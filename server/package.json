@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "lieefu.com server",
   "scripts": {
+    "build": "NODE_ENV=production webpack --env.prod --progress --display-error-details --colors",
     "start": "NODE_ENV=development nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -36,6 +37,8 @@
     "socket.io": "^1.7.3"
   },
   "devDependencies": {
-    "connect-livereload": "^0.6.0"
+    "connect-livereload": "^0.6.0",
+    "webpack": "^2.4.1",
+    "webpack-node-externals": "^1.5.4"
   }
 }
