@@ -1,6 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DownloadComponent} from './download/download.component';
+import { RipplewalletComponent} from './ripplewallet/ripplewallet.component';
 
 export const appRoutes = [
   {
@@ -10,6 +11,9 @@ export const appRoutes = [
   },{
     path: 'lilydict',
     loadChildren: './lilydict/lilydict.module#LilydictModule'
+  },{
+    path: 'ripplewallet',
+    component:RipplewalletComponent
   },{
     path:'download',
     component:DownloadComponent

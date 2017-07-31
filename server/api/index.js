@@ -9,4 +9,7 @@ router.get('/', (req, res) => {
 router.get('/lilydict/version', (req, res) => {
   res.status(200).json({ok:true,version:'1.0.1',url:'http://lieefu.com/download',message:'发现新版本，请下载升级'});
 });
+router.get('/ripplewallet/version', (req, res) => {
+  res.status(200).json({ok:true,version:'1.0.0',url:'http://lieefu.com/download',message:'发现新版本，请下载升级'});
+});
 module.exports = router;

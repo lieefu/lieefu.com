@@ -8,11 +8,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import {appRoutes} from './app.routes';
 import { DownloadComponent } from './download/download.component';
+import { RipplewalletComponent } from './ripplewallet/ripplewallet.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        DownloadComponent
+        DownloadComponent,
+        RipplewalletComponent
     ],
     imports: [
         NgbModule.forRoot(),
